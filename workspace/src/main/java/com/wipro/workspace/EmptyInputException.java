@@ -21,7 +21,7 @@ public class EmptyInputException extends RuntimeException {
 		this.errorMessage = errorMessage;
 	}
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+		return serialVersionUID; 
 	}
 	public EmptyInputException(String errorCode, String errorMessage) {
 		super();
