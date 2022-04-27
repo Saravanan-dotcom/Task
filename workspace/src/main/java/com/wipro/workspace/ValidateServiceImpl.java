@@ -11,8 +11,16 @@ public class ValidateServiceImpl implements ValidateService {
 
 	@Autowired
 	private NumberRepo numberRepo;
+	
 	@Autowired
 	Output output;
+	 public ValidateServiceImpl(ValidateRepo validateRepo, NumberRepo numberRepo,Output output) {
+	        this.validateRepo = validateRepo;
+	        this.numberRepo = numberRepo;
+	        this.output = output;
+	    }
+	 
+	
 
 	@Override
 	public Output processInput(InputValues input) {
@@ -28,10 +36,7 @@ public class ValidateServiceImpl implements ValidateService {
 			numberValidation = false;
 		}
 
-		output.setSpecialChar(input.getSpecialChar().replaceAll("[A-Za-z0-9]", ""));
-		output.setNumber(input.getNumber().stream().max(Integer::compare).get());
-		output.setNumberValidaion(numberValidation);
-		output.setRandomUUID(input.getRandomUUID());
+		extracted(input, numberValidation);
 
 		NumbersInput number = new NumbersInput();
 		for (int i : inputSaved.getNumber()) {
@@ -43,6 +48,13 @@ public class ValidateServiceImpl implements ValidateService {
 		return output;
 		
 		
+	}
+
+	private void extracted(InputValues input, boolean numberValidation) {
+		output.setSpecialChar(input.getSpecialChar().replaceAll("[A-Za-z0-9]", ""));
+		output.setNumber(input.getNumber().stream().max(Integer::compare).get());
+		output.setNumberValidaion(numberValidation);
+		output.setRandomUUID(input.getRandomUUID());
 	}
 
 }

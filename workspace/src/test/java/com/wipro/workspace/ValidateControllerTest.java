@@ -1,8 +1,6 @@
 package com.wipro.workspace;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import javax.servlet.http.HttpServletRequest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
