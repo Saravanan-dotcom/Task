@@ -1,5 +1,8 @@
 package com.wipro.workspace;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +29,16 @@ public class ValidateServiceImpl implements ValidateService {
 	public Output processInput(InputValues input) {
 		if(input.equals(null)) throw new EmptyInputException();
 		
+		List<NumbersInput> list = new ArrayList<NumbersInput>();
+		NumbersInput number = new NumbersInput();
+		for (int i : input.getNumber()) {
+			number.setNumber(i);
+			//number.setOb(inputSaved);
+			//numberRepo.save(number);
+			list.add(number);
+			number = new NumbersInput();
+		}
+		input.setOb(list);
 		InputValues inputSaved = validateRepo.save(input);
 		boolean numberValidation = false;
 
@@ -38,13 +51,7 @@ public class ValidateServiceImpl implements ValidateService {
 
 		extracted(input, numberValidation);
 
-		NumbersInput number = new NumbersInput();
-		for (int i : inputSaved.getNumber()) {
-			number.setNumber(i);
-			number.setOb(inputSaved);
-			numberRepo.save(number);
-			number = new NumbersInput();
-		}
+		
 		return output;
 		
 		

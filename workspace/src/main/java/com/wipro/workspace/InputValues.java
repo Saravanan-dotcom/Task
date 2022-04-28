@@ -91,6 +91,16 @@ public class InputValues {
 	public void setNumber(List<Integer> number) {
 		this.number = number;
 	}
+
+
+	public List<NumbersInput> getOb() {
+		return ob;
+	}
+
+
+	public void setOb(List<NumbersInput> ob) {
+		this.ob = ob;
+	}
 	
 	
 	

@@ -22,21 +22,20 @@ public class NumbersInput {
 	
 	
 	// Mapping the column of this table 
-    @ManyToOne
+ //   @ManyToOne
     //Adding the name
-    @JoinColumn(name = "Input_id")
-    InputValues ob;
-	
+//    @JoinColumn(name = "Input_id")
+//    InputValues ob;
+//	
 	public NumbersInput() {
 	}
 
 	
 
-	public NumbersInput(long id, int number, InputValues ob) {
+	public NumbersInput(long id, int number) {
 		super();
 		this.id_number = id;
 		this.number = number;
-		this.ob = ob;
 	}
 
 
@@ -57,19 +56,5 @@ public class NumbersInput {
 		this.number = number;
 	}
 
-
-
-	public InputValues getOb() {
-		return ob;
-	}
-
-
-
-	public void setOb(InputValues ob) {
-		this.ob = ob;
-	}
-
-	
-	
 	
 }
